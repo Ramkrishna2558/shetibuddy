@@ -1,0 +1,321 @@
+/* body {
+    font-family: 'Garamond', sans-serif;
+    background-color: #9BBEC8;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    
+} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* header */
+header {
+     background: #164863;
+     color: white;
+     padding: 10px; 
+     display: flex;
+     justify-content: space-between;
+     margin-top: 0%;
+     padding-top: 2%;
+     padding-left: 10%;
+     z-index: 3;
+    
+}
+
+
+.leftheaditems {
+    display: flex;
+}
+/* toggle switch  */
+.toggle-btn {
+    justify-content: flex-start; 
+    display: flex;
+    border: none;
+    background-color: #427D9D;
+    padding: 6px;
+    position: fixed; 
+    top: 10px; 
+    left: 25px; 
+    margin-bottom: 10px;
+    z-index: 4; 
+    font-size: 8px;
+    transition: 0.5s ease-in-out;
+
+}
+
+/* Navbar in header */
+#navul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    font-weight: bold;
+    font-family: 'Garamond', sans-serif;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+/* register and login container  */
+
+
+#login-container,
+#registration-container{
+    background-color: #427D9D;
+    border: 1px solid #ccc;
+    padding: 60px 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 2% 30% 10% 30%;
+    position: relative;
+     
+}
+#login-container h2,
+#registration-container h2 {
+    margin-top: 0; 
+    justify-content: center;
+}
+
+#registration-container {
+    padding-bottom: 60pt;
+    bottom: 10px;
+
+}
+form
+ {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+#login-form a{
+    color: #fff;
+}
+#login-form a:hover {
+    color: #bb2649;
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+
+}
+label {
+    font-weight: bold;
+}
+
+input {
+    background-color: #9BBEC8;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #164863;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    margin-bottom: auto;
+}
+
+
+#registerButton:hover{
+    background-color:#9BBEC8 ;
+    transition: 0.5s ease-in-out;
+
+}
+button:hover {
+    background-color:#9BBEC8 ;
+    transition: 0.5s ease-in-out;
+
+}
+
+#registration-container {
+    display: none;
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 20px; 
+}
+
+#regLoginButton {
+    background-color: #164863;
+    margin-top: 2px;
+    padding: 10px;
+}
+#regLoginButton:hover {
+    background-color:#9BBEC8 ;
+    transition: 0.5s ease-in-out;
+
+
+}
+
+/* forgot pass  */
+#forgotPasswordForm {
+    background-color: #427D9D;
+    border: 1px solid #ccc;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 22px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10% 30%;
+
+}
+
+#forgotPasswordForm h2 {
+    margin-top: 0;
+    justify-content: center;
+}
+
+#forgotPasswordForm label {
+    margin: 5px;
+    font-weight: bold;
+
+}
+
+#forgotPasswordForm input {
+    background-color: #9BBEC8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 2%;
+}
+
+#forgotPasswordForm button {
+    padding: 10px;
+    background-color: #164863;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: auto;
+}
+
+#forgotPasswordForm button:hover {
+    background-color: #9BBEC8;
+}
+
+
+/* sidebar  */
+
+
+#mySidebar {
+    z-index: 3;
+    border-radius: 4%;
+    width: 250px; 
+    transition: 0.5s ease-in-out;
+    overflow-x: hidden;
+    background-color: #427D9D;
+    height: 100%;
+    position: fixed; 
+    left: -22px; 
+    top: 0px; 
+
+}
+
+#mySidebar ul {
+    margin-top: 180px;
+    margin-left: 20px;
+}
+#mySidebar ul li a {
+    margin-left: 12px;
+    font-size: 14px;
+    margin-top: 30px;
+    color: fff;
+    margin-bottom: 12px;
+}
+
+
+.sidebar li {
+    text-transform: uppercase;
+    color: #164863;
+    
+}
+
+.sidebar {
+    margin-left: 12px;
+
+}
+
+#mySidebar ul li{
+    font-size: 14px;
+    margin-top: 40px;
+    list-style-type: none;
+}
+
+
+ul li a {
+    text-decoration: none;
+    color: rgb(56, 61, 65);
+    font-family: 'Garamond', sans-serif;
+    font-weight: bolder;
+    
+
+}
+ul li a:hover {
+   transition: 0.5 ease-in-out;
+   color: #9BBEC8;
+
+}
+
+footer {
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    background-color: #164863;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+}
+/* registration dropdown  */
+
+#security-question {
+    display: block;
+  position: relative;
+  background-color: #9BBEC8;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+
+}
+
+#security-question:hover {
+ border-color: #9BBEC8;
+}
+
+
+#security-question select option {
+    padding: 10px !important; 
+}
+
+@media only screen and (max-width: 768px) {
+    #login-container,
+    #registration-container,
+    #forgotPasswordForm{
+     
+        margin: 2% 10% 10% 10%;
+       
+        
+}
+
+header {
+   
+    padding-top: 5%;
+   
+}
+}
