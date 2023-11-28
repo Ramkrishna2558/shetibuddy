@@ -3,6 +3,7 @@ using DIgiBharat.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using System.Security.Claims;
 
 namespace DIgiBharat.Controllers
@@ -27,21 +28,32 @@ namespace DIgiBharat.Controllers
             var item = _groupService.getall();
             return Ok(item);
         }
-
+        [Route("Create")]
         [HttpPost("(Action)")]
         [Authorize]
         public IActionResult Create([FromBody]GroupModel group) 
         {
             var FarmerName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
             var Email=User.Claims.FirstOrDefault(x=>x.Type == ClaimTypes.Email)?.Value;
-            if (FarmerName.Any() && Email.Any()) {
-                if (_groupService.createGroup(FarmerName, Email, group))
-                {
-                    return StatusCode(StatusCodes.Status201Created);
-                }
+            if (_groupService.createGroup(FarmerName, Email, group))
+            {
+                return StatusCode(StatusCodes.Status201Created);
             }
-            
-            return Ok();
+            else
+                return StatusCode(StatusCodes.Status400BadRequest);
         }
+
+        
+        [HttpDelete("DeleteBy/{id}")]
+        [Authorize]
+        public IActionResult Delete(long id) {
+            var Email = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            if (_groupService.deleteGroupById(id,Email))
+            {
+                return Ok();
+            }
+            return StatusCode(StatusCodes.Status400BadRequest);
+        }
+        
     }
 }

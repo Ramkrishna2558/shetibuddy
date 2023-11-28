@@ -17,9 +17,21 @@ namespace DIgiBharat.Service
         public bool createGroup(string name, string email, GroupModel group) {
             group.FarmerName= name;
             group.Email= email;
+            group.CreatedOn = DateTime.Now;
             _appDbContext.Group.Add(group);
             _appDbContext.SaveChanges();
             return true;
+        }
+
+        public bool deleteGroupById(long id, string email)
+        {
+           var group= _appDbContext.Group.FirstOrDefault(x => x.Id == id && x.Email == email);
+            if (group!=null)
+            {
+                _appDbContext.Group.Remove(group);
+                return true;
+            }
+            return false;
         }
     }
 }

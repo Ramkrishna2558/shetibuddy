@@ -37,6 +37,7 @@ namespace DIgiBharat.Controllers
 
 
         [HttpPost("[action]")]
+
         public IActionResult Login([FromBody] Login appUser)
         {
             var user = _appDbContext.AppUser.FirstOrDefault(x => x.Mail == appUser.Email && x.Password == appUser.Password);
