@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/DIgiBharat/bin/Debug/net6.0/runtimes/win-arm/native
+/DIgiBharat/bin/Debug/net6.0/runtimes/win-arm64/native
