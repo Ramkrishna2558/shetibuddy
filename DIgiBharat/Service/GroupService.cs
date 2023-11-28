@@ -14,5 +14,12 @@ namespace DIgiBharat.Service
 
             return _appDbContext.Group.ToList();
         }
+        public bool createGroup(string name, string email, GroupModel group) {
+            group.FarmerName= name;
+            group.Email= email;
+            _appDbContext.Group.Add(group);
+            _appDbContext.SaveChanges();
+            return true;
+        }
     }
 }

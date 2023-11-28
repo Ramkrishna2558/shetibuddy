@@ -27,5 +27,21 @@ namespace DIgiBharat.Controllers
             var item = _groupService.getall();
             return Ok(item);
         }
+
+        [HttpPost("(Action)")]
+        [Authorize]
+        public IActionResult Create([FromBody]GroupModel group) 
+        {
+            var FarmerName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            var Email=User.Claims.FirstOrDefault(x=>x.Type == ClaimTypes.Email)?.Value;
+            if (FarmerName.Any() && Email.Any()) {
+                if (_groupService.createGroup(FarmerName, Email, group))
+                {
+                    return StatusCode(StatusCodes.Status201Created);
+                }
+            }
+            
+            return Ok();
+        }
     }
 }

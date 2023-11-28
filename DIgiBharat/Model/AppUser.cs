@@ -10,8 +10,8 @@ namespace DIgiBharat.Model
         public string Mail { get; set; }
         [Required]
         public string Password { get; set; }
-        public string? Name { get; set; }
-        public DateTime createdOn { get; set; }
-        public DateTime Lastlogin { get; set; }
+        public string Name { get; set; }
+        public DateTime? createdOn { get; set; }
+        public DateTime? Lastlogin { get; set; }
     }
 }

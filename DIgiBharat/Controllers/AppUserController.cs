@@ -1,6 +1,7 @@
 ﻿using DIgiBharat.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -27,6 +28,7 @@ namespace DIgiBharat.Controllers
             {
                 return BadRequest("User Email already exist");
             }
+            appUser.createdOn = DateTime.Now;
             _appDbContext.AppUser.Add(appUser);
             _appDbContext.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
@@ -35,9 +37,9 @@ namespace DIgiBharat.Controllers
 
 
         [HttpPost("[action]")]
-        public IActionResult Login([FromBody] AppUser appUser)
+        public IActionResult Login([FromBody] Login appUser)
         {
-            var user = _appDbContext.AppUser.FirstOrDefault(x => x.Mail == appUser.Mail && x.Password == appUser.Password);
+            var user = _appDbContext.AppUser.FirstOrDefault(x => x.Mail == appUser.Email && x.Password == appUser.Password);
             if (user == null)
             {
                 return NotFound();
@@ -55,9 +57,14 @@ namespace DIgiBharat.Controllers
                 issuer: _configuration["JWT:Issuer"],
                 audience: _configuration["JWT:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddDays(365),
                 signingCredentials: credentials);
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            if (jwt != null)
+            {
+                user.Lastlogin=DateTime.Now;
+                _appDbContext.SaveChanges();
+            }
             return Ok(jwt);
         }
 
