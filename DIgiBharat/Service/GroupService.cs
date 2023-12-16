@@ -14,6 +14,11 @@ namespace DIgiBharat.Service
 
             return _appDbContext.Group.ToList();
         }
+
+        public List<GroupModel> getgroups(string email)
+        {
+            return _appDbContext.Group.Where(x=>x.Email == email).ToList();
+        }
         public bool createGroup(string name, string email, GroupModel group) {
             group.FarmerName= name;
             group.Email= email;
