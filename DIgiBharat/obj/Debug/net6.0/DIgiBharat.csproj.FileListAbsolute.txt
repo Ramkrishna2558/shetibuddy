@@ -86,3 +86,4 @@ D:\profile\DIgiBharat\DIgiBharat\obj\Debug\net6.0\refint\DIgiBharat.dll
 D:\profile\DIgiBharat\DIgiBharat\obj\Debug\net6.0\DIgiBharat.pdb
 D:\profile\DIgiBharat\DIgiBharat\obj\Debug\net6.0\DIgiBharat.genruntimeconfig.cache
 D:\profile\DIgiBharat\DIgiBharat\obj\Debug\net6.0\ref\DIgiBharat.dll
+D:\profile\DIgiBharat\DIgiBharat\obj\Debug\net6.0\DIgiBharat.sourcelink.json
