@@ -52,7 +52,7 @@ namespace DIgiBharat.Controllers
             {
                 return Ok();
             }
-            return StatusCode(StatusCodes.Status400BadRequest);
+            return StatusCode(StatusCodes.Status404NotFound);
         }
         
     }
