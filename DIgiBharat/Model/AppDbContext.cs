@@ -7,5 +7,6 @@ namespace DIgiBharat.Model
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options) { }
         public DbSet<GroupModel> Group { get; set; }
         public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<GroupMember> groupMembers { get; set; }
     }
 }
