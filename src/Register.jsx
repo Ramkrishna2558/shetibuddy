@@ -13,8 +13,9 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://your-dotnet-api-endpoint.com/register', formData);
-
+      const response = await axios.post('https://localhost:5001/api/AppUser/ragister',
+       formData);
+       console.log(response);
       if (response.status === 200) {
         console.log('User registered successfully');
       } else {

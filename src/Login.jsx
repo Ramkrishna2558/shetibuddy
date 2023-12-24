@@ -4,17 +4,25 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
+  const decodedToken = jwt.decode(apitoken);
+  console.log('Decoded Token (without verification):', decodedToken);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://your-dotnet-api-endpoint.com/login', formData);
-
+      const response = await axios.post('https://localhost:5001/api/AppUser/login', formData);
+      const token = response.data;
+      const apitoken = token;
+      localStorage.setItem('apitoken', apitoken);
+      console.log(apitoken);
+   
       if (response.status === 200) {
+     
         console.log('Login successful');
       } else {
         console.error('Login failed');
@@ -39,7 +47,7 @@ export default function Login() {
           <label htmlFor="username">Username:</label>
           <input
             type="text"
-            id="username"
+            id="email"
             className="username mb-2 p-2"
             required
             onChange={handleChange}
