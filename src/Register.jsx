@@ -1,25 +1,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 export default function Register() {
   const [formData, setFormData] = useState({
-    newUsername: '',
-    newPassword: '',
-    securityQuestion: '',
-    securityAnswer: '',
+    Name: '',
+    Email: '',
+    Password: '',
+    mail: '',
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://localhost:5001/api/AppUser/ragister',
-       formData);
-       console.log(response);
+      const response = await axios.post(
+        'https://localhost:5001/api/AppUser/ragister',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      console.log(response);
+
       if (response.status === 200) {
         console.log('User registered successfully');
-      } else {
-        console.error('Registration failed');
+      } else if (response.status === 201) {
+        console.error('Registration with ssl certificate');
+      }
+      else {
+        console.error('error registering');
       }
     } catch (error) {
       console.error('Error during registration:', error);
@@ -34,52 +46,65 @@ export default function Register() {
   };
 
   return (
-    <div className="registration-container justify-center flex w-2/4 bg-slate-700 flex-col p-8">
-      <h2 className="text-white text-2xl mb-4">REGISTER</h2>
-      <form className="registration-form flex justify-center flex-col" onSubmit={handleSubmit}>    
-        <label htmlFor="new-username">New Username:</label>
-        <input
-          type="text"
-          id="new-username"
-          className="new-username mb-2 p-2"
-          required
-        />
+    <section className="flex justify-center">
+      <div className="registration-container justify-center flex w-2/4 bg-slate-700 flex-col p-8 rounded-xl items-center text-center gap-2">
+        <h2 className="text-white text-2xl mb-4">REGISTER</h2>
+        <form className="registration-form flex justify-center flex-col" onSubmit={handleSubmit}>
+          <label htmlFor="name" className="text-white">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="Name"
+            className="new-username mb-2 p-2 rounded-lg"
+            required
+            onChange={handleChange}
+          />
 
-        <label htmlFor="new-password">New Password:</label>
-        <input
-          type="password"
-          id="new-password"
-          className="new-password mb-2 p-2"
-          required
-        />
+          <label htmlFor="email" className="text-white">
+            Email:
+          </label>
+          <input
+            type="text"
+            id="Email"
+            className="new-username mb-2 p-2 rounded-lg"
+            required
+            onChange={handleChange}
+          />
 
-        <label htmlFor="security-question">Security Question:</label>
-        <select
-          id="security-question"
-          className="security-question mb-2 p-2"
-        >
-          <option value="">Select a security question</option>
-          <option value="last-name">What is your last name?</option>
-          <option value="pet-name">What is your pet's name?</option>
-          <option value="birth-place">What is your birthplace?</option>
-          <option value="middle-name">What is your middle name?</option>
-        </select>
+          <label htmlFor="password" className="text-white">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="Password"
+            className="new-password mb-2 p-2 rounded-lg"
+            required
+            onChange={handleChange}
+          />
 
-        <label htmlFor="registration-security-answer">Security Answer:</label>
-        <input
-          type="text"
-          id="registration-security-answer"
-          className="registration-security-answer mb-2 p-2"
-          required
-        />
+          <label htmlFor="mail" className="text-white">
+            Mail:
+          </label>
+          <input
+            type="text"
+            id="mail"
+            className="registration-security-answer mb-2 p-2 rounded-lg"
+            required
+            onChange={handleChange}
+          />
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">
-          Register user
-        </button>
-        <button className="regLoginButton bg-gray-500 text-white p-2 rounded hover:bg-gray-700">
-          Login Now
-        </button>
-      </form>
-    </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
+          >
+            Register user
+          </button>
+        </form>
+        <Link className="bg-slate-300 py-3 px-2 rounded-xl "  to="/login">
+        Login</Link>
+      </div>
+    </section>
   );
 }
+        
