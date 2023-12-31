@@ -1,0 +1,54 @@
+{
+    "en": {
+      "groupInformation": "Group Information",
+      "groupName": "Group Name",
+      "paymentType": "Payment Type",
+      "selectPaymentType": "Select Payment Type",
+      "perKiloPerAcre": "Per Kilo / Per Acre",
+      "perDay": "Per Day",
+      "workBased": "Work Based",
+      "amount": "Amount",
+      "amountPerKiloAcre": "Amount (Per Kilo / Per Acre)",
+      "amountPerDay": "Amount (Per Day)",
+      "amountWorkBased": "Amount for Work Based Payment",
+      "members": "Members",
+      "memberName": "Member Name",
+      "addMember": "Add Member",
+      "submit": "Submit"
+    },
+    "mr": {
+      "groupInformation": "समूह माहिती",
+      "groupName": "समूह नाव",
+      "paymentType": "चुकता प्रकार",
+      "selectPaymentType": "चुकता प्रकार निवडा",
+      "perKiloPerAcre": "प्रति किलो / प्रति एकर",
+      "perDay": "प्रतिदिन",
+      "workBased": "कामानुसार",
+      "amount": "रक्कम",
+      "amountPerKiloAcre": "रक्कम (प्रति किलो / प्रति एकर)",
+      "amountPerDay": "रक्कम (प्रतिदिन)",
+      "amountWorkBased": "कामानुसार रक्कम",
+      "members": "सदस्य",
+      "memberName": "सदस्य नाव",
+      "addMember": "सदस्य जोडा",
+      "submit": "सबमिट"
+    },
+    "hi": {
+      "groupInformation": "समूह जानकारी",
+      "groupName": "समूह का नाम",
+      "paymentType": "भुगतान का प्रकार",
+      "selectPaymentType": "भुगतान का प्रकार चुनें",
+      "perKiloPerAcre": "प्रति किलो / प्रति एकड़",
+      "perDay": "प्रतिदिन",
+      "workBased": "काम के आधार पर",
+      "amount": "राशि",
+      "amountPerKiloAcre": "राशि (प्रति किलो / प्रति एकड़)",
+      "amountPerDay": "राशि (प्रतिदिन)",
+      "amountWorkBased": "काम के आधार पर राशि",
+      "members": "सदस्य",
+      "memberName": "सदस्य का नाम",
+      "addMember": "सदस्य जोड़ें",
+      "submit": "प्रस्तुत"
+    }
+  }
+  
