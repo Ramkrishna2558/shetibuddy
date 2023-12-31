@@ -4,6 +4,7 @@ using DIgiBharat.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DIgiBharat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231231041152_dp-13")]
+    partial class dp13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,8 +86,6 @@ namespace DIgiBharat.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupModelId");
-
                     b.ToTable("groupMembers");
                 });
 
@@ -95,9 +96,6 @@ namespace DIgiBharat.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
 
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -116,23 +114,12 @@ namespace DIgiBharat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("amount")
+                        .HasColumnType("real");
+
                     b.HasKey("Id");
 
                     b.ToTable("Groups");
-                });
-
-            modelBuilder.Entity("DIgiBharat.Model.GroupMember", b =>
-                {
-                    b.HasOne("DIgiBharat.Model.GroupModel", null)
-                        .WithMany("Members")
-                        .HasForeignKey("GroupModelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DIgiBharat.Model.GroupModel", b =>
-                {
-                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

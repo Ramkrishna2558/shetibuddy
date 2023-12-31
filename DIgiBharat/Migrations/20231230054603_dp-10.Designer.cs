@@ -4,6 +4,7 @@ using DIgiBharat.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DIgiBharat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231230054603_dp-10")]
+    partial class dp10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,7 +81,10 @@ namespace DIgiBharat.Migrations
                     b.Property<long>("GroupModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<float>("Working")
+                    b.Property<float>("Wages")
+                        .HasColumnType("real");
+
+                    b.Property<float>("WorkingDays")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
@@ -96,9 +102,6 @@ namespace DIgiBharat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -112,9 +115,8 @@ namespace DIgiBharat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("Type")
+                        .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 

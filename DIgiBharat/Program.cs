@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddTransient<GroupService>();
-
+builder.Services.AddTransient<GroupMemberService>();
 var app = builder.Build();
 
 //Configure the HTTP request pipeline.
@@ -39,6 +39,24 @@ var app = builder.Build();
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
 //}
+
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder => builder.WithOrigins("http://localhost:5173")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+// Configure the HTTP request pipeline.
+// Enable CORS
+app.UseCors("AllowReactApp");
+
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

@@ -12,10 +12,10 @@ namespace DIgiBharat.Model
         [Required]
         public long GroupMemberMobileNumber { get; set; }
         [Required]
-        public float WorkingDays { get; set; }
-        [Required]
-        public float Wages { get; set; }
+        public float Working { get; set; }
         public float? AdvancePayment { get; set;}
 
+        [ForeignKey("GroupModel")]
+        public long GroupModelId { get; set; }
     }
 }

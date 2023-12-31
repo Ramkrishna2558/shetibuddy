@@ -10,12 +10,13 @@ namespace DIgiBharat.Model
         [Required]
         public string GroupName { get; set; }
         [Required]
-        public byte Type { get; set; }
+        public string Type { get; set; }
+        [Required]
+        public float Amount { get; set; }
         //public long? FarmerMobileNumber { get; set; }
         public string? FarmerName { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string? Email { get; set; }
-
-        public ICollection<GroupMember> Members { get; set; }
+        public ICollection<GroupMember>? Members { get; set; }
     }
 }

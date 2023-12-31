@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DIgiBharat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e08fb8c45688aaa75b8bf835afa88091b8c4b2ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87bc2c509b88718a453edc5aad3a60867ee4853b")]
 [assembly: System.Reflection.AssemblyProductAttribute("DIgiBharat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DIgiBharat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
