@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DIgiBharat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231230044813_dp-8")]
-    partial class dp8
+    [Migration("20240116124008_DP-1")]
+    partial class DP1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,7 @@ namespace DIgiBharat.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppUser");
+                    b.ToTable("AppUsers");
                 });
 
             modelBuilder.Entity("DIgiBharat.Model.GroupMember", b =>
@@ -71,9 +71,6 @@ namespace DIgiBharat.Migrations
                     b.Property<float?>("AdvancePayment")
                         .HasColumnType("real");
 
-                    b.Property<long>("GroupId")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("GroupMemberMobileNumber")
                         .HasColumnType("bigint");
 
@@ -81,13 +78,10 @@ namespace DIgiBharat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("GroupModelId")
+                    b.Property<long>("GroupModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<float>("Wages")
-                        .HasColumnType("real");
-
-                    b.Property<float>("WorkingDays")
+                    b.Property<float?>("Working")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
@@ -105,6 +99,9 @@ namespace DIgiBharat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<float>("Amount")
+                        .HasColumnType("real");
+
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -118,19 +115,22 @@ namespace DIgiBharat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("Type")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Group");
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("DIgiBharat.Model.GroupMember", b =>
                 {
                     b.HasOne("DIgiBharat.Model.GroupModel", null)
                         .WithMany("Members")
-                        .HasForeignKey("GroupModelId");
+                        .HasForeignKey("GroupModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DIgiBharat.Model.GroupModel", b =>

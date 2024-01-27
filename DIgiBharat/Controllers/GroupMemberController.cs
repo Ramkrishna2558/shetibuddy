@@ -12,10 +12,11 @@ namespace DIgiBharat.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GroupMemberController : ControllerBase    
+    public class GroupMemberController : ControllerBase
     {
         private readonly GroupMemberService _groupMemberService;
-        public GroupMemberController( GroupMemberService groupMemberService ) { 
+        public GroupMemberController(GroupMemberService groupMemberService)
+        {
             _groupMemberService = groupMemberService;
         }
 
@@ -23,7 +24,7 @@ namespace DIgiBharat.Controllers
         [Authorize]
         public async Task<IActionResult> GetMembersByGroupId(long id)
         {
-            var GroupMember =await _groupMemberService.GetByGroupId(id);
+            var GroupMember = await _groupMemberService.GetByGroupId(id);
             if (GroupMember == null)
             {
                 return NotFound();
@@ -31,10 +32,41 @@ namespace DIgiBharat.Controllers
             return Ok(GroupMember);
         }
 
-        public async Task<IActionResult> AddMember( GroupMember groupMember)
+
+        [Route("AddMember")]
+        [HttpPost("(Action)")]
+        [Authorize]
+        public async Task<IActionResult> AddMember([FromBody] GroupMember groupMember)
         {
 
-            return Ok();
+            if (await _groupMemberService.AddOrUpdate(groupMember))
+            {
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            return BadRequest();
         }
+
+        [HttpGet("GetMemberById/{GroupId}/{Id}")]
+        [Authorize]
+        public async Task<IActionResult> GetMemberById(long groupid, long id)
+        {
+            var member = await _groupMemberService.GetById(groupid, id);
+            if (member == null)
+            {
+                return BadRequest();
+            }
+            return Ok(member);
+        }
+        [HttpDelete("DeleteBy/{GroupId}/{Id}")]
+        [Authorize]
+        public async Task<IActionResult> Delete(long groupid, long id)
+        {
+            if (await _groupMemberService.deleteGroupById(groupid, id))
+            {
+                return Ok();
+            }
+            return StatusCode(StatusCodes.Status404NotFound);
+        }
+
     }
 }

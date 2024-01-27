@@ -16,13 +16,58 @@ namespace DIgiBharat.Service
         {
             using IDbConnection db = new SqlConnection(connection);
             db.Open();
-            const string query = "select * from groupMembers where Id=@id";
+            const string query = "select * from groupMembers where GroupModelId=@Id;";
             var Groups = (await db.QueryAsync<GroupMember>(query, new { Id = id })).ToList();
             db.Close();
             return Groups;
         }
 
-     
-        
+        public async Task<bool> AddOrUpdate( GroupMember groupMember)
+        {
+            using IDbConnection db = new SqlConnection(connection);
+            db.Open();
+            var a;
+            const string qurey = "INSERT INTO groupMembers (GroupMemberName, GroupMemberMobileNumber, Working, AdvancePayment, GroupModelId) VALUES (@GroupMemberName, @GroupMemberMobileNumber, @Working, @AdvancePayment, @GroupModelId);";
+            const string updateQurey = "UPDATE groupMembers SET GroupMemberName = @GroupMemberName, GroupMemberMobileNumber = @GroupMemberMobileNumber, Working=@Working, AdvancePayment=@AdvancePayment WHERE Id = @Id;";
+            if (groupMember.Id == 0)
+            {
+                a = (await db.ExecuteAsync(qurey, groupMember));
+            }
+            else
+            {
+                a= (await db.ExecuteAsync(updateQurey, groupMember));
+            }
+            db.Close();
+            if (a>0) {
+                return true;
+            }
+            return false;
+        }
+
+
+        public async Task<GroupMember> GetById(long groupid, long id)
+        {
+            GroupMember Group = new GroupMember();
+            using IDbConnection db = new SqlConnection(connection);
+            db.Open();
+            const string query = "select * from groupMembers where GroupModelId=@GroupModelId and Id=@Id;";
+            Group = (await db.QueryFirstOrDefaultAsync<GroupMember>(query, new { GroupModelId= groupid, Id = id }));
+            db.Close();
+            return Group;
+        }
+
+        public async Task<bool> deleteGroupById(long groupid, long id)
+        {
+            using IDbConnection db = new SqlConnection(connection);
+            db.Open();
+            string query = "DELETE FROM groupMembers WHERE Id = @Id and GroupModelId=@GroupModelId;";
+            int done = await db.ExecuteAsync(query, new { GroupModelId = groupid, Id = id });
+            db.Close();
+            if (done > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

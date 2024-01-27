@@ -11,8 +11,7 @@ namespace DIgiBharat.Model
         public string GroupMemberName { get; set; }
         [Required]
         public long GroupMemberMobileNumber { get; set; }
-        [Required]
-        public float Working { get; set; }
+        public float? Working { get; set; }
         public float? AdvancePayment { get; set;}
 
         [ForeignKey("GroupModel")]

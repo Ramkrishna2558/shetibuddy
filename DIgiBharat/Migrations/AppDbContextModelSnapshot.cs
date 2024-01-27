@@ -78,7 +78,7 @@ namespace DIgiBharat.Migrations
                     b.Property<long>("GroupModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<float>("Working")
+                    b.Property<float?>("Working")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
