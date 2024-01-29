@@ -46,8 +46,10 @@ const swapAnimation = {
 }; 
 const Home = ({ language }) => {
   const [groupName, setGroupName] = useState("");
-  const [payType, setPayType] = useState("");
+  const [Type, setType] = useState("");
   const [amount, setAmount] = useState("");
+  const token = localStorage.getItem("apitoken");
+console.log(token);
   // const [members, setMembers] = useState([]);
 
   // const handleMemberChange = (index, key, value) => {
@@ -60,21 +62,30 @@ const Home = ({ language }) => {
   //   setMembers([...members, { name: "" }]);
   // };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = {
       groupName,
-      payType,
+      Type,
       amount,
     };
-
+  
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, 
+        'Content-Type': 'application/json',
+      },
+    };
+  
     try {
       const response = await axios.post(
         "https://localhost:5001/api/Group/Create",
-        formData
+        formData,
+        config 
       );
-
+  
       if (response.ok) {
         console.log("Form data submitted successfully");
       } else {
@@ -84,6 +95,7 @@ const Home = ({ language }) => {
       console.error("Error during form submission:", error);
     }
   };
+  
 
   return (
     <IntlProvider locale={language} messages={messages[language]}>
@@ -172,7 +184,7 @@ const Home = ({ language }) => {
 
             <div>
              
- <motion.label  htmlFor="payType"
+ <motion.label  htmlFor="Type"
                 className="block text-sm font-medium text-gray-700"
                   key={language}
                   variants={swapAnimation}
@@ -183,9 +195,9 @@ const Home = ({ language }) => {
                   <FormattedMessage id="paymentTypeLabel" />
                 </motion.label>           
                 <motion.select
-                id="payType"
-                value={payType}
-                onChange={(e) => setPayType(e.target.value)}
+                id="Type"
+                value={Type}
+                onChange={(e) => setType(e.target.value)}
                 className="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 required
                 initial={{ x: -20, opacity: 0 }}
@@ -211,7 +223,7 @@ const Home = ({ language }) => {
               </motion.select>
             </div>
 
-            {payType === "PerKiloPerAcre" && (
+            {Type === "PerKiloPerAcre" && (
               <div>
                 <label
                   htmlFor="amount"
@@ -230,7 +242,7 @@ const Home = ({ language }) => {
               </div>
             )}
 
-            {payType === "PerDay" && (
+            {Type === "PerDay" && (
               <div>
                 <label
                   htmlFor="amount"
@@ -249,7 +261,7 @@ const Home = ({ language }) => {
               </div>
             )}
 
-            {payType === "WorkBased" && (
+            {Type === "WorkBased" && (
               <div>
                 <p>
                   {" "}

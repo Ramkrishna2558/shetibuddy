@@ -7,11 +7,14 @@ const messages = {
     title: "FarmLand India",
     lione: "My groups",
     litwo: "Create",
+    lithree: "View groups",
   },
   mr: {
     title: "थेट शेतातून",
     lione: "माझं समूह",
     litwo: "नवीन समूह तयार करा",
+    lithree: "View groups",
+
   },
 };
 
@@ -44,6 +47,11 @@ export default function Navbar({ setLanguage, language }) {
                   <Link to="/central">
                     {" "}
                     <FormattedMessage id="litwo" />
+                  </Link>
+                </li><li className="px-2 py-2 ">
+                  <Link to="/groups">
+                    {" "}
+                    <FormattedMessage id="lithree" />
                   </Link>
                 </li>
               </ul>

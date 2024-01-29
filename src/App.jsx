@@ -9,6 +9,8 @@ import Sidebar from './Sidebar';
 import Register from './Register';
 import Central from './Central';
 import Login from './Login';
+import CardGrid from './Pages/Groups';
+import GroupDetailsTable from './Pages/groupDetails';
 
 function App() {
   const [language, setLanguage] = useState('en'); 
@@ -25,6 +27,8 @@ function App() {
         <Route path="/navbar" element={<Navbar setLanguage={setLanguage} language={language} />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/central" element={<Central />} />
+        <Route path="/groups" element={<CardGrid />} />
+        <Route path="/group-details/:groupId" element={<GroupDetailsTable />} />
       </Routes>
     </Router>
   );
