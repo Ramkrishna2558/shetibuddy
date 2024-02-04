@@ -26,7 +26,7 @@ namespace DIgiBharat.Service
         {
             using IDbConnection db = new SqlConnection(connection);
             db.Open();
-            var a;
+            int a;
             const string qurey = "INSERT INTO groupMembers (GroupMemberName, GroupMemberMobileNumber, Working, AdvancePayment, GroupModelId) VALUES (@GroupMemberName, @GroupMemberMobileNumber, @Working, @AdvancePayment, @GroupModelId);";
             const string updateQurey = "UPDATE groupMembers SET GroupMemberName = @GroupMemberName, GroupMemberMobileNumber = @GroupMemberMobileNumber, Working=@Working, AdvancePayment=@AdvancePayment WHERE Id = @Id;";
             if (groupMember.Id == 0)
