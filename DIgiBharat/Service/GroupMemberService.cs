@@ -69,5 +69,19 @@ namespace DIgiBharat.Service
             }
             return false;
         }
+
+        public async Task<long> attendance(List<GroupMember> groupMembers)
+        {
+            foreach (GroupMember groupMember in groupMembers)
+            {
+               var a= await AddOrUpdate(groupMember);
+                if (a==false)
+                {
+                    return groupMember.Id;
+                }
+                
+            }
+            return 0;
+        }
     }
 }

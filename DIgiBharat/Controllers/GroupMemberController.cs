@@ -68,5 +68,15 @@ namespace DIgiBharat.Controllers
             return StatusCode(StatusCodes.Status404NotFound);
         }
 
+        [HttpPost("(Action)")]
+        [Authorize]
+        public async Task<IActionResult> Attendance([FromBody] List<GroupMember> groupMembers)
+        {
+            var response = await _groupMemberService.attendance(groupMembers);
+            if(response>0)
+                return BadRequest(response);
+            return Ok();
+        }
+
     }
 }

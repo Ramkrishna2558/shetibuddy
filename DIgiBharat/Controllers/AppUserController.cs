@@ -33,7 +33,6 @@ namespace DIgiBharat.Controllers
             db.Open();
             string query = "select * from AppUsers where Email=@Email;";
             var userExist = await db.QueryFirstOrDefaultAsync<AppUser>(query, new { Email = appUser.Email });
-            db.Close();
             
             if (userExist!=null)
             {
@@ -42,11 +41,9 @@ namespace DIgiBharat.Controllers
             {
                 return BadRequest("Passowrd and Conform Pasword must be same");
             }
-            using var connection = new SqlConnection(connstring);
-            connection.Open();
             const string insertquery = "insert into AppUsers ( ConformPassword, Password, Name, createdOn, Email ) values (@ConformPassword, @Password, @Name ,GETDATE(),@Email);";
-            int rowsAffected = connection.Execute(query,appUser);
-            connection.Close();
+            int rowsAffected = await db.ExecuteAsync(insertquery, appUser);
+            db.Close();
             return StatusCode(StatusCodes.Status201Created);
         }
 
