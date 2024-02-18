@@ -28,7 +28,7 @@ function App() {
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/central" element={<Central />} />
         <Route path="/groups" element={<CardGrid />} />
-        <Route path="/group-details/:groupId" element={<GroupDetailsTable />} />
+        <Route path="/group/:groupId" element={<GroupDetailsTable />} />
       </Routes>
     </Router>
   );

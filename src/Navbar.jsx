@@ -5,15 +5,15 @@ import { FormattedMessage, IntlProvider } from "react-intl";
 const messages = {
   en: {
     title: "FarmLand India",
-    lione: "My groups",
-    litwo: "Create",
-    lithree: "View groups",
+    lione: "Create group",
+    litwo: "Group details",
+    lithree: "All groups",
   },
   mr: {
     title: "थेट शेतातून",
-    lione: "माझं समूह",
-    litwo: "नवीन समूह तयार करा",
-    lithree: "View groups",
+    lione: "नवीन समूह तयार करा",
+    litwo: "माझं समूह",
+    lithree: "All groups",
 
   },
 };

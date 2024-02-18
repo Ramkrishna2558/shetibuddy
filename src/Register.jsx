@@ -6,10 +6,10 @@ import cropa from "./assets/crop.webp";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    Name: '',
+    name: '',
     Email: '',
-    Password: '',
-    mail: '',
+    password: '',
+    ConformPassword: '',
   });
 
   const handleSubmit = async (e) => {
@@ -86,8 +86,8 @@ const Register = () => {
               Name:
             </label>
             <input
-              type="text"
-              id="Name"
+              type="username"
+              id="name"
               className="new-username mb-2 p-2 rounded-lg"
               required
               onChange={handleChange}
@@ -97,7 +97,7 @@ const Register = () => {
               Email:
             </label>
             <input
-              type="text"
+              type="email"
               id="Email"
               className="new-username mb-2 p-2 rounded-lg"
               required
@@ -109,18 +109,18 @@ const Register = () => {
             </label>
             <input
               type="password"
-              id="Password"
+              id="password"
               className="new-password mb-2 p-2 rounded-lg"
               required
               onChange={handleChange}
             />
 
-            <label htmlFor="mail" className="text-white">
-              Mail:
+            <label htmlFor="Password" className="text-white">
+            Confirm Password:
             </label>
             <input
-              type="text"
-              id="mail"
+              type="password"
+              id="ConformPassword"
               className="registration-security-answer mb-2 p-2 rounded-lg"
               required
               onChange={handleChange}
