@@ -11,6 +11,7 @@ import Central from './Central';
 import Login from './Login';
 import CardGrid from './Pages/Groups';
 import GroupDetailsTable from './Pages/groupDetails';
+import AddMemberForm from './Pages/AddMember';
 
 function App() {
   const [language, setLanguage] = useState('en'); 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/central" element={<Central />} />
         <Route path="/groups" element={<CardGrid />} />
+        <Route path="/member-details" element={<AddMemberForm />} />
         <Route path="/group/:groupId" element={<GroupDetailsTable />} />
       </Routes>
     </Router>
