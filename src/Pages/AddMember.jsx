@@ -13,11 +13,12 @@ const AddMemberForm = ({ groupId, token, onMemberAdded }) => {
     try {
       const payload = {
         GroupModelId: groupId,
-        groupMember: groupMemberName,
+        // groupMember: groupMemberName,
         GroupMemberMobileNumber: groupMemberMobileNumber,
         AdvancePayment: advancePayment,
         GroupMemberName: groupMemberName,
-        // Working: working,
+        Working: working,
+        // Id: groupId,
       };
 
       const response = await axios.post(
@@ -71,13 +72,13 @@ const AddMemberForm = ({ groupId, token, onMemberAdded }) => {
           value={advancePayment}
           onChange={(e) => setAdvancePayment(e.target.value)}
         />
-        {/* <TextField
-          label="Paytype"
+        <TextField
+          label="if working? how many days"
           variant="outlined"
           fullWidth
           value={working}
           onChange={(e) => setWorking(e.target.value)}
-        /> */}
+        />
         <Button type="submit" variant="contained" color="primary">
           Add Member
         </Button>

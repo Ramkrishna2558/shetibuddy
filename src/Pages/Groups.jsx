@@ -142,10 +142,9 @@ function CardGrid() {
     pageState * rowsPerPage + rowsPerPage
   );
 
-  const handleGroupClick = (id) => {
-    navigate(`/group-details/${id}`);
+  const handleGroupClick = (groupId) => {
+    navigate(`/MemberAttendance/${groupId}`);
   };
-
   const filteredData = paginatedData.filter((group) => {
     const { id, groupName, type, farmerName, city } = group;
     const lowerSearchQuery = searchQuery.toLowerCase();
