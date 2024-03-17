@@ -4,13 +4,13 @@ import { FormattedMessage, IntlProvider } from "react-intl";
 
 const messages = {
   en: {
-    title: "FarmLand India",
+    title: "Agricult",
     lione: "Create group",
     litwo: "Group details",
     lithree: "All groups",
   },
   mr: {
-    title: "थेट शेतातून",
+    title: "कृषी सम्प्रदाय",
     lione: "नवीन समूह तयार करा",
     litwo: "माझं समूह",
     lithree: "All groups",

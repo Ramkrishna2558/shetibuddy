@@ -1,7 +1,7 @@
 {
   "name": "shetibuddy",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.2.1 Alpha",
   "type": "module",
   "scripts": {
     "dev": "vite",
