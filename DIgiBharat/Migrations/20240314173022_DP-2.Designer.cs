@@ -4,6 +4,7 @@ using DIgiBharat.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DIgiBharat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240314173022_DP-2")]
+    partial class DP2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,12 +138,6 @@ namespace DIgiBharat.Migrations
                     b.Property<long>("GroupId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("GroupMemberId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("GroupModelId")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("MemberId")
                         .HasColumnType("bigint");
 
@@ -148,10 +145,6 @@ namespace DIgiBharat.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GroupMemberId");
-
-                    b.HasIndex("GroupModelId");
 
                     b.ToTable("memberAttendaceLogs");
                 });
@@ -165,26 +158,8 @@ namespace DIgiBharat.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DIgiBharat.Model.MemberAttendaceLog", b =>
-                {
-                    b.HasOne("DIgiBharat.Model.GroupMember", null)
-                        .WithMany("MemberAttendaceLog")
-                        .HasForeignKey("GroupMemberId");
-
-                    b.HasOne("DIgiBharat.Model.GroupModel", null)
-                        .WithMany("MemberAttendaceLog")
-                        .HasForeignKey("GroupModelId");
-                });
-
-            modelBuilder.Entity("DIgiBharat.Model.GroupMember", b =>
-                {
-                    b.Navigation("MemberAttendaceLog");
-                });
-
             modelBuilder.Entity("DIgiBharat.Model.GroupModel", b =>
                 {
-                    b.Navigation("MemberAttendaceLog");
-
                     b.Navigation("Members");
                 });
 #pragma warning restore 612, 618

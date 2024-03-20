@@ -4,6 +4,7 @@ using DIgiBharat.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DIgiBharat.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240314173702_DP-3")]
+    partial class DP3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,7 +144,7 @@ namespace DIgiBharat.Migrations
                     b.Property<long?>("GroupModelId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("MemberId")
+                    b.Property<long>("MemberID")
                         .HasColumnType("bigint");
 
                     b.Property<double>("WorkingMark")

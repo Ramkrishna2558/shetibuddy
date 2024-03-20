@@ -70,18 +70,19 @@ namespace DIgiBharat.Service
             return false;
         }
 
-        public async Task<long> attendance(List<GroupMember> groupMembers)
+        public async Task<bool> attendance(MarkAttendanceEntity member, long groupId)
         {
-            foreach (GroupMember groupMember in groupMembers)
+            var memberdetail = await GetById(member.MemberId, groupId);
+            if (memberdetail != null)
             {
-               var a= await AddOrUpdate(groupMember);
-                if (a==false)
+                memberdetail.Working = memberdetail.Working + member.working;
+                if (await AddOrUpdate(memberdetail))
                 {
-                    return groupMember.Id;
+                    return true;
                 }
-                
             }
-            return 0;
+            
+            return false;
         }
     }
 }

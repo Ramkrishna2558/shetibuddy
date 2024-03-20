@@ -8,5 +8,7 @@ namespace DIgiBharat.Model
         public DbSet<GroupModel> Groups { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<GroupMember> groupMembers { get; set; }
+
+        public DbSet<MemberAttendaceLog> memberAttendaceLogs { get; set; }
     }
 }

@@ -16,5 +16,6 @@ namespace DIgiBharat.Model
 
         [ForeignKey("GroupModel")]
         public long GroupModelId { get; set; }
+        public ICollection<MemberAttendaceLog> MemberAttendaceLog { get; set; }
     }
 }

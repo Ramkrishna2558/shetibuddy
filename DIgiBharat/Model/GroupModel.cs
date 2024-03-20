@@ -18,5 +18,6 @@ namespace DIgiBharat.Model
         public DateTime? CreatedOn { get; set; }
         public string? Email { get; set; }
         public ICollection<GroupMember>? Members { get; set; }
+        public ICollection<MemberAttendaceLog> MemberAttendaceLog { get; set; } 
     }
 }
